@@ -9,4 +9,14 @@ setup(name='usethis-django-bootstrap',
       author="Jeff Buttars",
       author_email="jeffbuttars@gmail.com",
       packages=['usethis_bootstrap'],
+      url='https://github.com/jeffbuttars/usethis-django-bootstrap',
+      # data_files=[('static/bootstrap/img', 'static/bootstrap/img/*.png')],
+      package_dir={'usethis_bootstrap': 'usethis_bootstrap'},
+      package_data={'usethis_bootstrap': 
+                    ['static/css/bsthemes/*/*.css',
+                     'static/bootstrap/css/*.css',
+                     'static/bootstrap/img/*.png',
+                     'static/bootstrap/js/*.js',
+                     'templates/*.html',
+                    ]}
 )

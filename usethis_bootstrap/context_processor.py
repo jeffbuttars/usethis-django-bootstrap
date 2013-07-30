@@ -10,10 +10,10 @@ STATIC_URL = getattr(settings, 'STATIC_URL')
 
 # Our default settings.
 BOOTSTRAP_SETTINGS = {
-    'version': '2.3.2',
     'enable_themes': True,
     'theme': 'default',
-    'theme_dir': 'bsthemes',
+    'theme_dir': 'css/bsthemes',
+    # 'version': '2.3.2',
 }
 
 _THEMES_SCANNED = False
@@ -28,7 +28,7 @@ if hasattr(settings, 'BOOTSTRAP_SETTINGS'):
 def scan_themes():
     global _THEMES_CACHED
     global _THEMES_SCANNED
-    sroot = getattr(settings, 'STATIC_ROOT', None)
+    sroot = os.path.dirname(os.path.realpath(__file__))
 
     # If we're in DEBUG, scan every time. Otherwise, just scan on import
     if not settings.DEBUG and _THEMES_SCANNED:
@@ -45,20 +45,24 @@ def scan_themes():
         print("No theme dir set")
         return _THEMES_CACHED    
 
-    tdir = os.path.join(sroot, BOOTSTRAP_SETTINGS['theme_dir'])
+    tdir = os.path.join(sroot, 'static', BOOTSTRAP_SETTINGS['theme_dir'])
     if not os.path.exists(tdir):
         print("Can't find theme dir %s" % tdir)
         return _THEMES_CACHED    
 
     dlist = os.listdir(tdir)
-    # print("dlist %s" % dlist)
+    print("dlist %s" % dlist)
     _THEMES_CACHED = {'default': None}
     for d in dlist:
         dp = os.path.join(tdir, d)
 
-        # print("Checking %s:%s, %s" % (d, os.path.isdir(dp), dp))
-        # print("Checking %s:%s" % (os.path.join(dp, 'bootstrap.css'), os.path.exists(os.path.join(dp, 'bootstrap.css'))) )
-        # print("Checking %s:%s" % (os.path.join(dp, 'bootstrap.min.css'), os.path.exists(os.path.join(dp, 'bootstrap.min.css'))) )
+        print("Checking %s:%s, %s" % (d, os.path.isdir(dp), dp))
+        print("Checking %s:%s" % (os.path.join(dp, 'bootstrap.css'),
+                                  os.path.exists(
+                                      os.path.join(dp, 'bootstrap.css'))))
+        print("Checking %s:%s" % (os.path.join(dp, 'bootstrap.min.css'),
+                                  os.path.exists(
+                                      os.path.join(dp, 'bootstrap.min.css'))))
 
         if os.path.isdir(dp):
             cssf = os.path.join(dp, 'bootstrap.css')
@@ -103,7 +107,7 @@ def bootstrap_urls(context):
     # Find all available themes
     themes = scan_themes()
 
-    theme = context.session.get("bootstrap_theme", '')
+    theme = context.session.get("bootstrap_theme", BOOTSTRAP_SETTINGS['theme'])
     # print("THEME: %s" % theme)
     if theme and theme != 'default' and theme in themes:
 
