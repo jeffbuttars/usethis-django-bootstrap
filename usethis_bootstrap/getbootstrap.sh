@@ -14,8 +14,8 @@ if [[ -n $1 ]]; then
     VERSION="$1"
 fi
 
-#BSURL="http://twitter.github.io/bootstrap/assets/bootstrap.zip"
-BSURL="http://getbootstrap.com/$VERSION/assets/bootstrap.zip"
+#BSURL="http://getbootstrap.com/$VERSION/assets/bootstrap.zip"
+BSURL="http://getbootstrap.com/bs-v3.0.0-rc1-dist.zip"
 
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 OLDDIR="$THIS_DIR"
@@ -36,6 +36,8 @@ cd "$THIS_DIR"
 mkdir -p static
 cd static
 unzip "/tmp/$$bootstrap.zip"
+mkdir -p bootstrap
+cp -Rvf dist/* bootstrap/
 cd -
 
 # Grab the bootswatch themes
