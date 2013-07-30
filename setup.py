@@ -10,6 +10,7 @@ setup(name='usethis-django-bootstrap',
       author_email="jeffbuttars@gmail.com",
       packages=['usethis_bootstrap'],
       url='https://github.com/jeffbuttars/usethis-django-bootstrap',
+      download_url='https://github.com/jeffbuttars/usethis-django-bootstrap/releases/download/1.0/usethis-django-bootstrap-1.0.0-2.3.2.tar.gz',
       package_dir={'usethis_bootstrap': 'usethis_bootstrap'},
       package_data={'usethis_bootstrap': 
                     ['static/css/bsthemes/*/*.css',
