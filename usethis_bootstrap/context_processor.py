@@ -96,7 +96,7 @@ def scan_themes():
 def bootstrap_urls(context):
 
     pre = '<link rel="stylesheet"'
-    css_fmt = '{} href="{}"'
+    css_fmt = '{} href="{}" />'
     suffix = '.min'
     theme_dir = BOOTSTRAP_SETTINGS['theme_dir']
     css_dir = 'bootstrap/css'
