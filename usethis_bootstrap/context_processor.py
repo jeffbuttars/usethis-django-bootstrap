@@ -1,5 +1,6 @@
 import os
 import os.path
+import glob
 import re
 from collections import OrderedDict
 import copy
@@ -12,7 +13,7 @@ STATIC_URL = getattr(settings, 'STATIC_URL')
 BOOTSTRAP_SETTINGS = {
     'enable_themes': True,
     'theme': 'default',
-    'theme_dir': 'css/bsthemes',
+    'theme_dir': 'bootstrap',
     # 'version': '2.3.2',
 }
 
@@ -40,21 +41,19 @@ def scan_themes():
         print("No static root")
         return _THEMES_CACHED    
 
-    tdir = BOOTSTRAP_SETTINGS.get('theme_dir', '')
-    if not tdir:
-        print("No theme dir set")
+    tdir = BOOTSTRAP_SETTINGS.get('theme_dir', 'bootstrap')
+
+    ftdir = os.path.join(sroot, 'static', tdir)
+    if not os.path.exists(ftdir):
+        print("Can't find theme dir %s" % ftdir)
         return _THEMES_CACHED    
 
-    tdir = os.path.join(sroot, 'static', BOOTSTRAP_SETTINGS['theme_dir'])
-    if not os.path.exists(tdir):
-        print("Can't find theme dir %s" % tdir)
-        return _THEMES_CACHED    
-
-    dlist = os.listdir(tdir)
-    print("dlist %s" % dlist)
+    dlist = glob.glob(ftdir + "/*_css")
+    print("ftdir: %s, dlist %s" % (ftdir, dlist))
     _THEMES_CACHED = {'default': None}
     for d in dlist:
-        dp = os.path.join(tdir, d)
+        print("d: %s" % d)
+        dp = os.path.join(ftdir, d)
 
         print("Checking %s:%s, %s" % (d, os.path.isdir(dp), dp))
         print("Checking %s:%s" % (os.path.join(dp, 'bootstrap.css'),
@@ -64,22 +63,29 @@ def scan_themes():
                                   os.path.exists(
                                       os.path.join(dp, 'bootstrap.min.css'))))
 
+        db = os.path.basename(d)
+        print("db: %s" % db)
+
         if os.path.isdir(dp):
             cssf = os.path.join(dp, 'bootstrap.css')
             cssf_min = os.path.join(dp, 'bootstrap.min.css')
+            print("cssf: %s, cssf_min: %s" % (cssf, cssf_min))
 
             if not os.path.exists(cssf):
                 cssf = None
             else:
-                cssf = os.path.join(d,  'bootstrap.css')
+                cssf = os.path.join(tdir, db, 'bootstrap.css')
 
             if not os.path.exists(cssf_min):
                 cssf_min = None
             else:
-                cssf_min = os.path.join(d,  'bootstrap.min.css')
+                cssf_min = os.path.join(tdir, db, 'bootstrap.min.css')
 
+            print("tdir: %s, cssf: %s, cssf_min: %s" % (tdir, cssf, cssf_min))
+
+            db = db.split('_css', -1)[0]
             if cssf or cssf_min:
-                _THEMES_CACHED[d] = { 
+                _THEMES_CACHED[db] = { 
                     'css': cssf,
                     'css_min': cssf_min,
                 }
@@ -117,8 +123,8 @@ def bootstrap_urls(context):
         if settings.DEBUG and titem['css']:
             css_url = titem['css']
 
-        css_url = '{}{}/{}'.format(
-            STATIC_URL, theme_dir, css_url)
+        css_url = '{}{}'.format(
+            STATIC_URL, css_url)
     else:
         css_url = '{}{}/bootstrap{}.css'.format(
             STATIC_URL, css_dir, suffix)
