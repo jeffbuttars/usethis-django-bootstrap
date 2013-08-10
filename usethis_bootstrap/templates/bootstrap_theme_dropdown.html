@@ -6,8 +6,13 @@
     </a>
     <ul class="dropdown-menu">
         {% for theme, css in BOOTSTRAP_THEMES.items %}
-        <li class="theme_item"><a href="/theme/{{ theme }}">{{ theme }}</a></li>
+            {% if BOOTSTRAP_CUR_THEME == theme %}
+            <li class="theme_item disabled"><a href="/theme/{{ theme }}">{{ theme }}</a></li>
+            {% else %}
+            <li class="theme_item"><a href="/theme/{{ theme }}">{{ theme }}</a></li>
+            {% endif %}
         {% endfor %}
+
     </ul>
 </li>
 {% endif %}

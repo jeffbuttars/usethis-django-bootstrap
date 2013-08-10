@@ -129,7 +129,7 @@ def bootstrap_urls(context):
         css_url = '{}{}/bootstrap{}.css'.format(
             STATIC_URL, css_dir, suffix)
 
-    resp_url = '{}bootstrap/css/bootstrap-responsive{}.css"'.format(
+    resp_url = '{}bootstrap/css/bootstrap-responsive{}.css'.format(
         STATIC_URL, suffix)
 
     js_url =  '{}bootstrap/js/bootstrap{}.js'.format(STATIC_URL, suffix)
