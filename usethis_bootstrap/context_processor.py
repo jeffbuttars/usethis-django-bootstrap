@@ -145,8 +145,9 @@ def bootstrap_urls(context):
     resp_url = '{}bootstrap/css/bootstrap-responsive{}.css'.format(
         STATIC_URL, suffix)
 
-    js_url =  '{}bootstrap/js/bootstrap{}.js'.format(STATIC_URL, suffix)
-    phone_js_url =  '{}bootstrap/js/bootstrap-phone-hack{}.js'.format(STATIC_URL, suffix)
+    js_url = '{}bootstrap/js/bootstrap{}.js'.format(STATIC_URL, suffix)
+    phone_js_url = '{}bootstrap/js/bootstrap-phone-hack{}.js'.format(
+        STATIC_URL, suffix)
 
     resp = {
         'BOOTSTRAP_CSS': css_fmt.format(pre, css_url),
