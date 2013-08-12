@@ -22,7 +22,7 @@ BOOTSTRAP_SETTINGS = {
 
 _THEMES_SCANNED = False
 _THEMES_CACHED = {'default': None}
-_URLS_CACHED = {}
+_URLS_CACHED = None
 bs_css_regex = re.compile('bootstrap(\.min)?.css')
 
 # There are bootstrap settings in the project settings,
@@ -107,33 +107,38 @@ def scan_themes():
 def bootstrap_urls(context):
 
     global _URLS_CACHED
+    debug = settings.DEBUG
             
     # Find all available themes
     themes = scan_themes()
+    theme = context.session.get("bootstrap_theme", BOOTSTRAP_SETTINGS['theme'])
 
     # If we're not in DEBUG mode and the urls have already been
-    # processed, don't process them again.
-    if not settings.DEBUG and _URLS_CACHED:
+    # processed, don't process them again unless we have too.
+    if not debug and _URLS_CACHED:
         logger.info("Using cached urls")
-        return _URLS_CACHED
+        # If they haven't changed the theme, don't process any more
+        if theme == _URLS_CACHED['BOOTSTRAP_CUR_THEME']:
+            return _URLS_CACHED
 
+    logger.info("Generating Bootstrap URLs")
+    
     pre = '<link rel="stylesheet"'
     css_fmt = '{} href="{}" />'
     suffix = '.min'
     theme_dir = BOOTSTRAP_SETTINGS['theme_dir']
     css_dir = 'bootstrap/css'
 
-    if settings.DEBUG:
+    if debug:
         suffix = ''
 
-    theme = context.session.get("bootstrap_theme", BOOTSTRAP_SETTINGS['theme'])
     logger.debug("THEME: %s", theme)
     if theme and theme != 'default' and theme in themes:
 
         titem = themes[theme]
         css_url = titem['css_min'] or titem['css']
 
-        if settings.DEBUG and titem['css']:
+        if debug and titem['css']:
             css_url = titem['css']
 
         css_url = '{}{}'.format(
