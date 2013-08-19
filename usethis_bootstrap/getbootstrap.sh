@@ -9,13 +9,15 @@ KMAG="\x1B[35m"
 KCYN="\x1B[36m"
 KWHT="\x1B[37m"
 
-VERSION='2.3.2'
+VERSION='3.0.0'
 if [[ -n $1 ]]; then
     VERSION="$1"
 fi
 
 #BSURL="http://twitter.github.io/bootstrap/assets/bootstrap.zip"
-BSURL="http://getbootstrap.com/$VERSION/assets/bootstrap.zip"
+# BSURL="http://getbootstrap.com/$VERSION/assets/bootstrap.zip"
+# BSURL="https://github.com/twbs/bootstrap/archive/v$VERSION.zip"
+BSURL="https://github.com/twbs/bootstrap/releases/download/v${VERSION}/bootstrap-${VERSION}-dist.zip"
 
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 OLDDIR="$THIS_DIR"
@@ -36,6 +38,8 @@ cd "$THIS_DIR"
 mkdir -p static
 cd static
 unzip "/tmp/$$bootstrap.zip"
+cp -fr dist/* "bootstrap-${VERSION}/"
+rm -fr dist
 cd -
 
 # Grab the bootswatch themes
@@ -43,7 +47,7 @@ bs_themes="amelia cerulean cosmo cyborg flatly journal readable simplex slate sp
 for theme in $bs_themes ; do
     echo -e "$KGRN Downloading theme $theme ...$KNRM"
 
-    outdir="./static/css/bsthemes/$theme"
+    outdir="./static/bootstrap-$VERSION/${theme}_css"
     mkdir -p "$outdir"
 
     curl -L -o  "$outdir/bootstrap.min.css" "http://bootswatch.com/$theme/bootstrap.min.css"

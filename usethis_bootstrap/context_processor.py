@@ -10,6 +10,7 @@ import logging
 logger = logging.getLogger('django.debug')
 
 STATIC_URL = getattr(settings, 'STATIC_URL')
+BSVER = '3.0.0'
 
 
 # Our default settings.
@@ -46,7 +47,7 @@ def scan_themes():
         logger.debug("No static root")
         return _THEMES_CACHED    
 
-    tdir = BOOTSTRAP_SETTINGS.get('theme_dir', 'bootstrap')
+    tdir = BOOTSTRAP_SETTINGS.get('theme_dir', 'bootstrap-%s' % BSVER)
 
     ftdir = os.path.join(sroot, 'static', tdir)
     if not os.path.exists(ftdir):
@@ -127,7 +128,7 @@ def bootstrap_urls(context):
     css_fmt = '{} href="{}" />'
     suffix = '.min'
     theme_dir = BOOTSTRAP_SETTINGS['theme_dir']
-    css_dir = 'bootstrap/css'
+    css_dir = 'bootstrap-%s/css' % BSVER
 
     if debug:
         suffix = ''
@@ -147,27 +148,27 @@ def bootstrap_urls(context):
         css_url = '{}{}/bootstrap{}.css'.format(
             STATIC_URL, css_dir, suffix)
 
-    resp_url = '{}bootstrap/css/bootstrap-responsive{}.css'.format(
-        STATIC_URL, suffix)
+    resp_url = '{}bootstrap-{}/css/bootstrap-responsive{}.css'.format(
+        STATIC_URL, BSVER, suffix)
 
-    js_url = '{}bootstrap/js/bootstrap{}.js'.format(STATIC_URL, suffix)
-    phone_js_url = '{}bootstrap/js/bootstrap-phone-hack{}.js'.format(
-        STATIC_URL, suffix)
+    js_url = '{}bootstrap-{}/js/bootstrap{}.js'.format(BSVER, STATIC_URL, suffix)
+    # phone_js_url = '{}bootstrap/js/bootstrap-phone-hack{}.js'.format(
+    #     STATIC_URL, suffix)
 
     resp = {
-        'BOOTSTRAP_CSS': css_fmt.format(pre, css_url),
-        'BOOTSTRAP_RESPONSIVE_CSS': css_fmt.format(pre, resp_url),
-        'BOOTSTRAP_JS': '<script src="{}"></script>'.format(js_url),
-        'BOOTSTRAP_PHONEHACK_JS': '<script src="{}"></script>'.format(phone_js_url),
+        'BOOTSTRAP3_CSS': css_fmt.format(pre, css_url),
+        'BOOTSTRAP3_RESPONSIVE_CSS': css_fmt.format(pre, resp_url),
+        'BOOTSTRAP3_JS': '<script src="{}"></script>'.format(js_url),
+        # 'BOOTSTRAP_PHONEHACK_JS': '<script src="{}"></script>'.format(phone_js_url),
     }
 
     if BOOTSTRAP_SETTINGS['enable_themes'] and themes:
-        resp['BOOTSTRAP_THEMES'] = OrderedDict(
+        resp['BOOTSTRAP3_THEMES'] = OrderedDict(
             sorted(themes.items(), key=lambda t: t[0]))
-        resp['BOOTSTRAP_CUR_THEME'] = theme or 'default'
+        resp['BOOTSTRAP3_CUR_THEME'] = theme or 'default'
             
-    resp['BOOTSTRAP_COMBINED_CSS'] = '{}\n{}'.format(
-        resp['BOOTSTRAP_CSS'], resp['BOOTSTRAP_RESPONSIVE_CSS']
+    resp['BOOTSTRAP3_COMBINED_CSS'] = '{}\n{}'.format(
+        resp['BOOTSTRAP3_CSS'], resp['BOOTSTRAP3_RESPONSIVE_CSS']
         )
 
     _URLS_CACHED = resp
