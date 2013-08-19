@@ -126,11 +126,9 @@ def bootstrap_urls(context):
     
     pre = '<link rel="stylesheet"'
     css_fmt = '{} href="{}" />'
-    theme_css_url = None
     suffix = '.min'
-    theme_dir = BOOTSTRAP_SETTINGS['theme_dir']
-    css_dir = 'bootstrap-%s/css' % BSVER
-    base_css = 'boostrap{}.css'.format(suffix)
+    theme_css_url = None
+    static_base = "{}bootstrap-{}".format(STATIC_URL, BSVER)
 
     if debug:
         suffix = ''
@@ -138,7 +136,7 @@ def bootstrap_urls(context):
     logger.debug("THEME: %s", theme)
     if theme in themes:
         if theme == 'default':
-            theme_css_url = '/boostrap-theme{}.css'.format(suffix)
+            theme_css_url = '{}/css/bootstrap-theme{}.css'.format(static_base, suffix)
         elif theme != '-notheme':
             titem = themes[theme]
             theme_css_url = titem['css_min'] or titem['css']
@@ -146,28 +144,36 @@ def bootstrap_urls(context):
             if debug and titem['css']:
                 theme_css_url = titem['css']
 
-        theme_css_url = '{}/bootstrap-{}/css_{}/{}'.format(
-            STATIC_URL, BSVER, theme, theme_css_url)
+            theme_css_url = '{}/css_{}/{}'.format(
+                static_base, theme, theme_css_url)
 
-    resp_url = '{}bootstrap-{}/css/bootstrap-responsive{}.css'.format(
-        STATIC_URL, BSVER, suffix)
+    resp_url = '{}/css/bootstrap-responsive{}.css'.format(
+        static_base, suffix)
 
-    js_url = '{}bootstrap-{}/js/bootstrap{}.js'.format(BSVER, STATIC_URL, suffix)
+    js_url = '{}/js/bootstrap{}.js'.format(static_base, suffix)
     # phone_js_url = '{}bootstrap/js/bootstrap-phone-hack{}.js'.format(
     #     STATIC_URL, suffix)
 
     resp = {
-        'BOOTSTRAP3_CSS': css_fmt.format(pre, base_css),
+        'BOOTSTRAP3_CSS': css_fmt.format(pre,
+                                         '{}/css/bootstrap{}.css'.format(static_base, suffix)),
         'BOOTSTRAP3_RESPONSIVE_CSS': css_fmt.format(pre, resp_url),
         'BOOTSTRAP3_JS': '<script src="{}"></script>'.format(js_url),
         # 'BOOTSTRAP_PHONEHACK_JS': '<script src="{}"></script>'.format(phone_js_url),
     }
 
     if BOOTSTRAP_SETTINGS['enable_themes'] and themes:
-        resp['BOOTSTRAP3_THEME_CSS'] = css_fmt.format(pre, theme_css_url)
-        resp['BOOTSTRAP3_THEMES'] = OrderedDict(
-            sorted(themes.items(), key=lambda t: t[0]))
-        resp['BOOTSTRAP3_CUR_THEME'] = theme or 'default'
+        if theme_css_url:
+            resp['BOOTSTRAP3_THEME_CSS'] = css_fmt.format(pre, theme_css_url)
+
+        tl = themes.keys()
+        tl.sort()
+        tl = ['No Theme'] + tl
+        resp['BOOTSTRAP3_THEMES'] = tl
+        # resp['BOOTSTRAP3_THEMES'] = OrderedDict(
+        #     sorted(themes.items(), key=lambda t: t[0]))
+
+        resp['BOOTSTRAP3_CUR_THEME'] = theme or 'No Theme'
             
     resp['BOOTSTRAP3_COMBINED_CSS'] = '{}\n{}'.format(
         resp['BOOTSTRAP3_CSS'], resp['BOOTSTRAP3_RESPONSIVE_CSS']
