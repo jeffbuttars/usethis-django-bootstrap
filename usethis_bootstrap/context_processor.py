@@ -126,27 +126,28 @@ def bootstrap_urls(context):
     
     pre = '<link rel="stylesheet"'
     css_fmt = '{} href="{}" />'
+    theme_css_url = None
     suffix = '.min'
     theme_dir = BOOTSTRAP_SETTINGS['theme_dir']
     css_dir = 'bootstrap-%s/css' % BSVER
+    base_css = 'boostrap{}.css'.format(suffix)
 
     if debug:
         suffix = ''
 
     logger.debug("THEME: %s", theme)
-    if theme and theme != 'default' and theme in themes:
+    if theme in themes:
+        if theme == 'default':
+            theme_css_url = '/boostrap-theme{}.css'.format(suffix)
+        elif theme != '-notheme':
+            titem = themes[theme]
+            theme_css_url = titem['css_min'] or titem['css']
 
-        titem = themes[theme]
-        css_url = titem['css_min'] or titem['css']
+            if debug and titem['css']:
+                theme_css_url = titem['css']
 
-        if debug and titem['css']:
-            css_url = titem['css']
-
-        css_url = '{}{}'.format(
-            STATIC_URL, css_url)
-    else:
-        css_url = '{}{}/bootstrap{}.css'.format(
-            STATIC_URL, css_dir, suffix)
+        theme_css_url = '{}/bootstrap-{}/css_{}/{}'.format(
+            STATIC_URL, BSVER, theme, theme_css_url)
 
     resp_url = '{}bootstrap-{}/css/bootstrap-responsive{}.css'.format(
         STATIC_URL, BSVER, suffix)
@@ -156,13 +157,14 @@ def bootstrap_urls(context):
     #     STATIC_URL, suffix)
 
     resp = {
-        'BOOTSTRAP3_CSS': css_fmt.format(pre, css_url),
+        'BOOTSTRAP3_CSS': css_fmt.format(pre, base_css),
         'BOOTSTRAP3_RESPONSIVE_CSS': css_fmt.format(pre, resp_url),
         'BOOTSTRAP3_JS': '<script src="{}"></script>'.format(js_url),
         # 'BOOTSTRAP_PHONEHACK_JS': '<script src="{}"></script>'.format(phone_js_url),
     }
 
     if BOOTSTRAP_SETTINGS['enable_themes'] and themes:
+        resp['BOOTSTRAP3_THEME_CSS'] = css_fmt.format(pre, theme_css_url)
         resp['BOOTSTRAP3_THEMES'] = OrderedDict(
             sorted(themes.items(), key=lambda t: t[0]))
         resp['BOOTSTRAP3_CUR_THEME'] = theme or 'default'
