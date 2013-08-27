@@ -14,9 +14,6 @@ if [[ -n $1 ]]; then
     VERSION="$1"
 fi
 
-#BSURL="http://twitter.github.io/bootstrap/assets/bootstrap.zip"
-# BSURL="http://getbootstrap.com/$VERSION/assets/bootstrap.zip"
-# BSURL="https://github.com/twbs/bootstrap/archive/v$VERSION.zip"
 BSURL="https://github.com/twbs/bootstrap/releases/download/v${VERSION}/bootstrap-${VERSION}-dist.zip"
 
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

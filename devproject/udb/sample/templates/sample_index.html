@@ -38,7 +38,13 @@
                 <li><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' 'default' %}">Default</a></li>
                 <li class="divider"></li>
                 {% for theme in BOOTSTRAP3_THEMES %}
-                <li><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' theme %}">{{theme|capfirst}}</a></li>
+                {% if theme != 'default' %}
+                    {% if BOOTSTRAP3_CUR_THEME == theme %}
+                    <li class="disabled"><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' theme %}">{{theme|capfirst}}</a></li>
+                    {% else %}
+                    <li><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' theme %}">{{theme|capfirst}}</a></li>
+                    {% endif %}
+                {% endif %}
                 {% endfor %}
               </ul>
             </li>
