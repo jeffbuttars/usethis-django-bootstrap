@@ -157,7 +157,6 @@ def bootstrap_urls(context):
     resp = {
         'BOOTSTRAP3_CSS': css_fmt.format(pre,
                                          '{}/css/bootstrap{}.css'.format(static_base, suffix)),
-        'BOOTSTRAP3_RESPONSIVE_CSS': css_fmt.format(pre, resp_url),
         'BOOTSTRAP3_JS': '<script src="{}"></script>'.format(js_url),
         # 'BOOTSTRAP_PHONEHACK_JS': '<script src="{}"></script>'.format(phone_js_url),
     }
@@ -175,10 +174,6 @@ def bootstrap_urls(context):
 
         resp['BOOTSTRAP3_CUR_THEME'] = theme or 'No Theme'
             
-    resp['BOOTSTRAP3_COMBINED_CSS'] = '{}\n{}'.format(
-        resp['BOOTSTRAP3_CSS'], resp['BOOTSTRAP3_RESPONSIVE_CSS']
-        )
-
     _URLS_CACHED = resp
     logger.debug("bootstrap URLS contexts: %s", resp)
     return resp
