@@ -43,7 +43,7 @@ rm -fr dist
 cd -
 
 # Grab the bootswatch themes
-bs_themes="amelia cerulean cosmo cyborg flatly journal readable simplex slate spacelab superhero united"
+bs_themes="amelia cerulean cosmo cyborg flatly journal readable simplex slate spacelab united"
 for theme in $bs_themes ; do
     echo -e "$KGRN Downloading theme $theme ...$KNRM"
 

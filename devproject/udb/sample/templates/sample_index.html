@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bootswatch: Simplex</title>
+  <title>Bootswatch: {{BOOTSTRAP3_CUR_THEME}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <!-- <link rel="stylesheet" href="./bootstrap.css" media="screen"> -->
@@ -33,12 +33,12 @@
 
             {% if BOOTSTRAP3_THEMES %}
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes<span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
-                <li><a tabindex="-1" href="../default/">Default</a></li>
+                <li><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' 'default' %}">Default</a></li>
                 <li class="divider"></li>
-                {% for theme in BOOTSTRAP3_THEMES.items %}
-                <li><a tabindex="-1" href="../amelia/">{{theme}}</a></li>
+                {% for theme in BOOTSTRAP3_THEMES %}
+                <li><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' theme %}">{{theme|capfirst}}</a></li>
                 {% endfor %}
               </ul>
             </li>
@@ -76,8 +76,8 @@
       <div class="page-header" id="banner">
         <div class="row">
           <div class="col-lg-6">
-            <h1>Simplex</h1>
-            <p class="lead">Mini and minimalist</p>
+            <h1>{{BOOTSTRAP3_CUR_THEME}}</h1>
+            <p class="lead">Description goes here.</p>
           </div>
           <div class="col-lg-6">
             <div class="bsa well">
@@ -1127,7 +1127,7 @@
 
 
     <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
-    <script src="{{ BOOTSTRAP3_JS }}js/bootstrap.min.js"></script>
+    {{ BOOTSTRAP3_JS|safe }}
     <script src="{{ STATIC_URL }}js/bootswatch.js"></script>
   </body>
 </html>
