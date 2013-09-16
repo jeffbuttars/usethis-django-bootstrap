@@ -167,6 +167,7 @@ def bootstrap_urls(context):
     if BOOTSTRAP_SETTINGS['enable_themes'] and themes:
         if theme_css_url:
             resp['BOOTSTRAP3_THEME_CSS'] = css_fmt.format(pre, theme_css_url)
+            resp['BOOTSTRAP3_CSS'] += '\n' + css_fmt.format(pre, theme_css_url)
 
         tl = themes.keys()
         tl.sort()
