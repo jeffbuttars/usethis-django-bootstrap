@@ -124,10 +124,13 @@ def bootstrap_urls(context):
 
     # If we're not in DEBUG mode and the urls have already been
     # processed, don't process them again unless we have too.
+
+    # XXX
+    # If something funny happens??? Not sure what to do yet.
     if not debug and _URLS_CACHED:
         logger.info("Using cached urls")
         # If they haven't changed the theme, don't process any more
-        if theme == _URLS_CACHED['BOOTSTRAP_CUR_THEME']:
+        if theme == _URLS_CACHED['BOOTSTRAP3_CUR_THEME']:
             return _URLS_CACHED
 
     logger.info("Generating Bootstrap URLs")
