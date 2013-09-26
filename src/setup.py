@@ -3,7 +3,7 @@
 
 from distutils.core import setup
 
-BSVERSION = '3.0.1'
+BSVERSION = '3.0.2'
 
 setup(name='usethis-django-bootstrap',
       version='%sb' % BSVERSION,
@@ -29,11 +29,11 @@ setup(name='usethis-django-bootstrap',
       ],
       package_dir={'usethis_bootstrap': 'usethis_bootstrap'},
       package_data={'usethis_bootstrap':
-                    ['static/bootstrap-3.0.0/css/*.css' % BSVERSION,
-                     'static/bootstrap-3.0.0/fonts/*' % BSVERSION,
-                     'static/bootstrap-3.0.0/img/*.png' % BSVERSION,
-                     'static/bootstrap-3.0.0/js/*.js' % BSVERSION,
-                     'static/bootstrap-3.0.0/*_css/*.css' % BSVERSION,
+                    ['static/bootstrap-3.0.0/css/*.css',
+                     'static/bootstrap-3.0.0/fonts/*',
+                     'static/bootstrap-3.0.0/img/*.png',
+                     'static/bootstrap-3.0.0/js/*.js',
+                     'static/bootstrap-3.0.0/*_css/*.css',
                      'templates/*.html',
                      ]}
       )
