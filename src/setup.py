@@ -29,11 +29,11 @@ setup(name='usethis-django-bootstrap',
       ],
       package_dir={'usethis_bootstrap': 'usethis_bootstrap'},
       package_data={'usethis_bootstrap':
-                    ['static/bootstrap-%s/css/*.css' % BSVERSION,
-                     'static/bootstrap-%s/fonts/*' % BSVERSION,
-                     'static/bootstrap-%s/img/*.png' % BSVERSION,
-                     'static/bootstrap-%s/js/*.js' % BSVERSION,
-                     'static/bootstrap-%s/*_css/*.css' % BSVERSION,
+                    ['static/bootstrap-3.0.0/css/*.css' % BSVERSION,
+                     'static/bootstrap-3.0.0/fonts/*' % BSVERSION,
+                     'static/bootstrap-3.0.0/img/*.png' % BSVERSION,
+                     'static/bootstrap-3.0.0/js/*.js' % BSVERSION,
+                     'static/bootstrap-3.0.0/*_css/*.css' % BSVERSION,
                      'templates/*.html',
                      ]}
       )
