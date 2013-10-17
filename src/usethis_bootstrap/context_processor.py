@@ -5,7 +5,7 @@ import re
 from django.conf import settings  # import the settingsfile
 
 import logging
-logger = logging.getLogger('django.debug')
+# logger = logging.getLogger('django.debug')
 
 STATIC_URL = getattr(settings, 'STATIC_URL')
 BSVER = '3.0.0'
@@ -34,7 +34,7 @@ def scan_themes():
 
     # If we're in DEBUG, scan every time. Otherwise, just scan on import
     if not settings.DEBUG and _THEMES_SCANNED:
-        logger.debug("Using cached themes")
+        # logger.debug("Using cached themes")
         return _THEMES_CACHED
         # _THEMES_SCANNED = True
 
@@ -42,14 +42,14 @@ def scan_themes():
     static_base = "{}bootstrap-{}".format(STATIC_URL, BSVER)
 
     if not sroot:
-        logger.debug("No static root")
+        # logger.debug("No static root")
         return _THEMES_CACHED
 
     tdir = BOOTSTRAP_SETTINGS.get('theme_dir', 'bootstrap-%s' % BSVER)
     ftdir = os.path.join(sroot, 'static', tdir)
 
     if not os.path.exists(ftdir):
-        logger.debug("Can't find theme dir %s", ftdir)
+        # logger.debug("Can't find theme dir %s", ftdir)
         return _THEMES_CACHED
 
     # Fill in the default bs theme
@@ -61,26 +61,26 @@ def scan_themes():
     }
 
     dlist = glob.glob(ftdir + "/*_css")
-    logger.debug("ftdir: %s, dlist %s", ftdir, dlist)
+    # logger.debug("ftdir: %s, dlist %s", ftdir, dlist)
     for d in dlist:
-        logger.debug("d: %s", d)
+        # logger.debug("d: %s", d)
         dp = os.path.join(ftdir, d)
 
-        logger.debug("Checking %s:%s, %s", d, os.path.isdir(dp), dp)
-        logger.debug("Checking %s:%s", os.path.join(dp, 'bootstrap.css'),
-                     os.path.exists(
-                         os.path.join(dp, 'bootstrap.css')))
-        logger.debug("Checking %s:%s", os.path.join(dp, 'bootstrap.min.css'),
-                     os.path.exists(
-                         os.path.join(dp, 'bootstrap.min.css')))
+        # logger.debug("Checking %s:%s, %s", d, os.path.isdir(dp), dp)
+        # logger.debug("Checking %s:%s", os.path.join(dp, 'bootstrap.css'),
+        #              os.path.exists(
+        #                  os.path.join(dp, 'bootstrap.css')))
+        # logger.debug("Checking %s:%s", os.path.join(dp, 'bootstrap.min.css'),
+        #              os.path.exists(
+        #                  os.path.join(dp, 'bootstrap.min.css')))
 
         db = os.path.basename(d)
-        logger.debug("db: %s", db)
+        # logger.debug("db: %s", db)
 
         if os.path.isdir(dp):
             cssf = os.path.join(d, 'bootstrap.css')
             cssf_min = os.path.join(d, 'bootstrap.min.css')
-            logger.debug("cssf: %s, cssf_min: %s", cssf, cssf_min)
+            # logger.debug("cssf: %s, cssf_min: %s", cssf, cssf_min)
 
             if not os.path.exists(cssf):
                 cssf = None
@@ -94,7 +94,7 @@ def scan_themes():
                 cssf_min = os.path.join(tdir, db, 'bootstrap.min.css')
                 cssf_min = 'bootstrap.min.css'
 
-            logger.debug("tdir: %s, cssf: %s, cssf_min: %s", tdir, cssf, cssf_min)
+            # logger.debug("tdir: %s, cssf: %s, cssf_min: %s", tdir, cssf, cssf_min)
 
             db = db.split('_css', -1)[0]
             if cssf or cssf_min:
@@ -108,7 +108,7 @@ def scan_themes():
 
     _THEMES_SCANNED = True
 
-    logger.debug("Found themes: %s", _THEMES_CACHED)
+    # logger.debug("Found themes: %s", _THEMES_CACHED)
     return _THEMES_CACHED
 #scan_themes()
 
@@ -125,12 +125,12 @@ def bootstrap_urls(context):
     # If we're not in DEBUG mode and the urls have already been
     # processed, don't process them again unless we have too.
     if not debug and _URLS_CACHED:
-        logger.info("Using cached urls")
+        # logger.info("Using cached urls")
         # If they haven't changed the theme, don't process any more
         if theme == _URLS_CACHED['BOOTSTRAP3_CUR_THEME']:
             return _URLS_CACHED
 
-    logger.info("Generating Bootstrap URLs")
+    # logger.info("Generating Bootstrap URLs")
 
     pre = '<link rel="stylesheet"'
     css_fmt = '{} href="{}" />'
@@ -141,7 +141,7 @@ def bootstrap_urls(context):
     if debug:
         suffix = ''
 
-    logger.debug("THEME: %s", theme)
+    # logger.debug("THEME: %s", theme)
     if theme in themes:
         if theme != 'default':
             titem = themes[theme]
@@ -173,7 +173,7 @@ def bootstrap_urls(context):
         resp['BOOTSTRAP3_CUR_THEME'] = theme or 'default'
 
     _URLS_CACHED = resp
-    logger.debug("bootstrap URLS contexts: %s", resp)
+    # logger.debug("bootstrap URLS contexts: %s", resp)
     return resp
 
 # Scan on startup
