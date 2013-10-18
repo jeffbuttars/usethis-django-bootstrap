@@ -3,11 +3,11 @@
 
 from distutils.core import setup
 
-BSVERSION = '3.0.0'
+BSVERSION = '3.0.2'
 
 setup(name='usethis-django-bootstrap',
-      version='%s.2a' % BSVERSION,
-      description="Bootstrap 3 for Django with themes and theme chooser.",
+      version='%s' % BSVERSION,
+      description="Bootstrap for Django with themes and theme chooser.",
       author="Jeff Buttars",
       author_email="jeffbuttars@gmail.com",
       packages=['usethis_bootstrap'],
@@ -29,11 +29,11 @@ setup(name='usethis-django-bootstrap',
       ],
       package_dir={'usethis_bootstrap': 'usethis_bootstrap'},
       package_data={'usethis_bootstrap':
-                    ['static/bootstrap-%s/css/*.css' % BSVERSION,
-                     'static/bootstrap-%s/fonts/*' % BSVERSION,
-                     'static/bootstrap-%s/img/*.png' % BSVERSION,
-                     'static/bootstrap-%s/js/*.js' % BSVERSION,
-                     'static/bootstrap-%s/*_css/*.css' % BSVERSION,
+                    ['static/bootstrap-3.0.0/css/*.css',
+                     'static/bootstrap-3.0.0/fonts/*',
+                     'static/bootstrap-3.0.0/img/*.png',
+                     'static/bootstrap-3.0.0/js/*.js',
+                     'static/bootstrap-3.0.0/*_css/*.css',
                      'templates/*.html',
                      ]}
       )
