@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -17,3 +18,7 @@ urlpatterns = patterns('',
     url(r'', include('usethis_bootstrap.urls')),
     url(r'^$', 'sample.views.index', name='home'),
 )
+
+urlpatterns += patterns('django.contrib.staticfiles.views',
+        url(r'^static/(?P<path>.*)$', 'serve'),
+    )

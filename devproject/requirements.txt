@@ -1,4 +1,4 @@
-Django==1.5.2
-django-annoying==0.7.7
-usethis-django-bootstrap==3.0.0.0
+Django==1.6.2
+django-annoying==0.7.9
+usethis-django-bootstrap==3.0.3
 wsgiref==0.1.2
