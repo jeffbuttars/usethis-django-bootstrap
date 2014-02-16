@@ -1,4 +1,5 @@
 *.pyc
-MANIFEST
-build/
-dist/
+src/build/
+src/dist/
+src/MANIFEST
+README.md.html

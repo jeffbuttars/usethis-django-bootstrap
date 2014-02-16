@@ -1,0 +1,17 @@
+{% if BOOTSTRAP3_THEMES %}
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Style ( {{ BOOTSTRAP3_CUR_THEME }} )
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        {% for theme in BOOTSTRAP3_THEMES %}
+            {% if BOOTSTRAP3_CUR_THEME == theme %}
+            <li class="theme_item disabled"><a href="{% url 'usethis-bootstrap-theme' theme %}">{{ theme|capfirst }}</a></li>
+            {% else %}
+            <li class="theme_item"><a href="{% url 'usethis-bootstrap-theme' theme %}">{{theme|capfirst }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+{% endif %}

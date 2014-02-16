@@ -1,0 +1,4 @@
+Django==1.5.2
+django-annoying==0.7.7
+usethis-django-bootstrap==3.0.0.0
+wsgiref==0.1.2

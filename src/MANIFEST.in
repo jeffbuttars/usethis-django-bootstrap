@@ -1,0 +1,2 @@
+recursive-include usethis_bootstrap/static *.css *.js *.png *.svg *.woff *.ttf *.eot
+recursive-include usethis_bootstrap/templates *.html
