@@ -31,7 +31,6 @@ setup(name='usethis-django-bootstrap',
       package_data={'usethis_bootstrap':
                     ['static/bootstrap-3.1.1/css/*.css',
                      'static/bootstrap-3.1.1/fonts/*',
-                     'static/bootstrap-3.1.1/img/*.png',
                      'static/bootstrap-3.1.1/js/*.js',
                      'static/bootstrap-3.1.1/*_css/*.css',
                      'templates/*.html',
