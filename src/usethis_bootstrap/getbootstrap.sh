@@ -43,20 +43,8 @@ mv  "bootstrap-${BS_VERSION}-dist/" "bootstrap-${BS_VERSION}/"
 rm -fr dist
 cd -
 
+# Grab the bootswatch themes
 export BSW_API_VERSION=3
-export BSW_OUTDIR="$THIS_DIR/static/bootstrap-$BS_VERSION/${theme}_css"
+export BSW_OUTDIR="$THIS_DIR/static/bootstrap-$BS_VERSION"
 
-./getbswatch.py
-
-# # Grab the bootswatch themes
-# bs_themes="amelia cerulean cosmo cupid cyborg flatly journal lumen readable
-# simplex slate spacelab superhero united yeti"
-# for theme in $bs_themes ; do
-#     echo -e "$KGRN Downloading theme $theme ...$KNRM"
-
-#     outdir="$PWD/static/bootstrap-$BS_VERSION/${theme}_css"
-#     mkdir -p "$outdir"
-
-#     curl -L -o  "$outdir/bootstrap.min.css" "http://bootswatch.com/$theme/bootstrap.min.css"
-#     curl -L -o "$outdir/bootstrap.css" "http://bootswatch.com/$theme/bootstrap.css"
-# done
+$THIS_DIR/getbswatch.py
