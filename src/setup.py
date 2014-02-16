@@ -3,7 +3,7 @@
 
 from distutils.core import setup
 
-BSVERSION = '3.0.2'
+BSVERSION = '3.1.0'
 
 setup(name='usethis-django-bootstrap',
       version='%s' % BSVERSION,
