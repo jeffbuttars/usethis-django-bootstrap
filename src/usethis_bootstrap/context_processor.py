@@ -8,7 +8,7 @@ import logging
 # logger = logging.getLogger('django.debug')
 
 STATIC_URL = getattr(settings, 'STATIC_URL')
-BSVER = '3.0.0'
+BSVER = '3.1.1'
 
 
 # Our default settings.
