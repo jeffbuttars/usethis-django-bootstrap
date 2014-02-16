@@ -9,12 +9,13 @@ KMAG="\x1B[35m"
 KCYN="\x1B[36m"
 KWHT="\x1B[37m"
 
-VERSION='3.0.0'
+BS_VERSION='3.1.1'
 if [[ -n $1 ]]; then
-    VERSION="$1"
+    BS_VERSION="$1"
 fi
 
-BSURL="https://github.com/twbs/bootstrap/releases/download/v${VERSION}/bootstrap-${VERSION}-dist.zip"
+
+BSURL="https://github.com/twbs/bootstrap/releases/download/v${BS_VERSION}/bootstrap-${BS_VERSION}-dist.zip"
 
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 OLDDIR="$THIS_DIR"
@@ -27,6 +28,8 @@ if [[ "$res" != "0" ]]; then
     exit 1
 fi
 
+rm -fr "$THIS_DIR/static"
+
 echo -e "$KGRN Downloading Bootstrap from $BSURL ...$KNRM"
 
 curl -L -o "/tmp/$$bootstrap.zip"  "$BSURL"
@@ -35,18 +38,25 @@ cd "$THIS_DIR"
 mkdir -p static
 cd static
 unzip "/tmp/$$bootstrap.zip"
-cp -fr dist/* "bootstrap-${VERSION}/"
+
+mv  "bootstrap-${BS_VERSION}-dist/" "bootstrap-${BS_VERSION}/"
 rm -fr dist
 cd -
 
-# Grab the bootswatch themes
-bs_themes="amelia cerulean cosmo cyborg flatly journal readable simplex slate spacelab united"
-for theme in $bs_themes ; do
-    echo -e "$KGRN Downloading theme $theme ...$KNRM"
+export BSW_API_VERSION=3
+export BSW_OUTDIR="$THIS_DIR/static/bootstrap-$BS_VERSION/${theme}_css"
 
-    outdir="./static/bootstrap-$VERSION/${theme}_css"
-    mkdir -p "$outdir"
+./getbswatch.py
 
-    curl -L -o  "$outdir/bootstrap.min.css" "http://bootswatch.com/$theme/bootstrap.min.css"
-    curl -L -o "$outdir/bootstrap.css" "http://bootswatch.com/$theme/bootstrap.css"
-done
+# # Grab the bootswatch themes
+# bs_themes="amelia cerulean cosmo cupid cyborg flatly journal lumen readable
+# simplex slate spacelab superhero united yeti"
+# for theme in $bs_themes ; do
+#     echo -e "$KGRN Downloading theme $theme ...$KNRM"
+
+#     outdir="$PWD/static/bootstrap-$BS_VERSION/${theme}_css"
+#     mkdir -p "$outdir"
+
+#     curl -L -o  "$outdir/bootstrap.min.css" "http://bootswatch.com/$theme/bootstrap.min.css"
+#     curl -L -o "$outdir/bootstrap.css" "http://bootswatch.com/$theme/bootstrap.css"
+# done
