@@ -1,0 +1,4 @@
+.venv
+.pyo
+.pyc
+.requirements.txt.bak
