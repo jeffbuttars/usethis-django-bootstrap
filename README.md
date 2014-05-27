@@ -1,7 +1,7 @@
 usethis-django-bootstrap
 ========================
 
-# Version 1.0.4
+# Version 3.1.1
 
 My own Django app for easily including Bootstrap and Bootswatch into a Django project. Includes CDN usage.
 
@@ -21,10 +21,6 @@ The easiest and probably best way to install is with pip. Simply issue the
 command:
 
     pip install usethis-django-bootstrap
-
-or download the tar ball and install manually:
-
-    Tarball instructions go here.
 
 ## Context Variables
 
