@@ -1,9 +1,9 @@
 usethis-django-bootstrap
 ========================
 
-# Version 3.1.1
+# Version 3.2.0
 
-My own Django app for easily including Bootstrap and Bootswatch into a Django project. Includes CDN usage.
+My own Django app for easily including Bootstrap and Bootswatch into a Django project.
 
 This is a drop in app that includes Bootstrap and Bootswatch sources and
 minimized sources. This app provides context variables for templates that make
