@@ -1,14 +1,13 @@
 import os
 import os.path
 import glob
-import re
 from django.conf import settings  # import the settingsfile
 
 import logging
-# logger = logging.getLogger('django.debug')
+logger = logging.getLogger('django.debug')
 
 STATIC_URL = getattr(settings, 'STATIC_URL')
-BSVER = '3.1.1'
+BSVER = '3.2.0'
 
 
 # Our default settings.
@@ -110,7 +109,7 @@ def scan_themes():
 
     # logger.debug("Found themes: %s", _THEMES_CACHED)
     return _THEMES_CACHED
-#scan_themes()
+# scan_themes()
 
 
 def bootstrap_urls(context):
@@ -136,7 +135,7 @@ def bootstrap_urls(context):
     # logger.info("Generating Bootstrap URLs")
 
     pre = '<link rel="stylesheet"'
-    css_fmt = '{} href="{}" />'
+    css_fmt = '{} href="{}" {extras}>'
     suffix = '.min'
     theme_css_url = None
     static_base = "{}bootstrap-{}".format(STATIC_URL, BSVER)
@@ -158,16 +157,17 @@ def bootstrap_urls(context):
     #     STATIC_URL, suffix)
 
     resp = {
-        'BOOTSTRAP3_CSS': css_fmt.format(pre,
-                                         '{}/css/bootstrap{}.css'.format(static_base, suffix)),
+        'BOOTSTRAP3_CSS': css_fmt.format(
+            pre,
+            '{}/css/bootstrap{}.css'.format(static_base, suffix),
+            extras="media=\"screen\""),
         'BOOTSTRAP3_JS': '<script src="{}"></script>'.format(js_url),
         # 'BOOTSTRAP_PHONEHACK_JS': '<script src="{}"></script>'.format(phone_js_url),
     }
 
     if BOOTSTRAP_SETTINGS['enable_themes'] and themes:
         if theme_css_url:
-            resp['BOOTSTRAP3_THEME_CSS'] = css_fmt.format(pre, theme_css_url)
-            resp['BOOTSTRAP3_CSS'] += '\n' + css_fmt.format(pre, theme_css_url)
+            resp['BOOTSTRAP3_CSS'] += '\n' + css_fmt.format(pre, theme_css_url, extras="")
 
         tl = themes.keys()
         tl.sort()

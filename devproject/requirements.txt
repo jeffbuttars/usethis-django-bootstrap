@@ -1,9 +1,2 @@
-Django==1.6
-backports.ssl-match-hostname==3.4.0.2
-django-annoying==0.7.9
-django-tornado==1.1.6
-docutils==0.11
-tornado==3.2
-usethis-django-bootstrap==3.1.1
-wheel==0.22.0
-wsgiref==0.1.2
+Django==1.6.2
+usethis-django-bootstrap==3.0.3
