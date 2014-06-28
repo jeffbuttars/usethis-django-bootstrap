@@ -41,7 +41,7 @@ def main():
                 outfile = os.path.join(theme_dir, os.path.basename(theme[ct]))
                 fd = open(outfile, 'w')
                 # print(dir(resp))
-                fd.write(resp.content)
+                fd.write(str(resp.content))
                 print("Wrote {}\n".format(outfile))
                 fd.close()
         # end for ct in ('css', 'cssMin')
