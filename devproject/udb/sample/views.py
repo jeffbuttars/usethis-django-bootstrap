@@ -1,15 +1,6 @@
-from annoying.decorators import render_to
+from django.views.generic.base import TemplateView
 
 
-@render_to("sample_index.html")
-def index(req):
-    """todo: Docstring for function
-
-    :param arg1: arg description
-    :type arg1: type description
-    :return:
-    :rtype:
-    """
-
-    return {}
-#index()
+class Index(TemplateView):
+    template_name = "sample_index.html"
+# Index

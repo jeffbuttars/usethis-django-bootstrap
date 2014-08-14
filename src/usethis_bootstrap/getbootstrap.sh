@@ -9,7 +9,7 @@ KMAG="\x1B[35m"
 KCYN="\x1B[36m"
 KWHT="\x1B[37m"
 
-BS_VERSION='3.1.1'
+export BS_VERSION='3.2.0'
 if [[ -n $1 ]]; then
     BS_VERSION="$1"
 fi
@@ -34,13 +34,12 @@ echo -e "$KGRN Downloading Bootstrap from $BSURL ...$KNRM"
 
 curl -L -o "/tmp/$$bootstrap.zip"  "$BSURL"
 
-cd "$THIS_DIR"
+# cd "$THIS_DIR"
 mkdir -p static
 cd static
 unzip "/tmp/$$bootstrap.zip"
 
 mv  "bootstrap-${BS_VERSION}-dist/" "bootstrap-${BS_VERSION}/"
-rm -fr dist
 cd -
 
 # Grab the bootswatch themes

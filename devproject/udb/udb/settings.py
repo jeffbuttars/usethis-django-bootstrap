@@ -212,12 +212,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'usethis_bootstrap',
-    'sample',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'usethis_bootstrap',
+    'sample',
 )
 
 # A sample logging configuration. The only tangible logging
