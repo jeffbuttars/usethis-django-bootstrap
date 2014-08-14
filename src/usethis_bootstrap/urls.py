@@ -1,7 +1,10 @@
+# import sys
+# print("path: " + str(sys.path))
 from django.conf.urls import patterns, url
-import views
+from usethis_bootstrap import views
 
-urlpatterns = patterns('',
-                       url(r'theme/(?P<theme>\w*)/$', views.theme,
-                           name='usethis-bootstrap-theme'),
-                      )
+urlpatterns = patterns(
+    '',
+    url(r'theme/(?P<theme>\w*)/$', views.theme,
+        name='usethis-bootstrap-theme'),
+)

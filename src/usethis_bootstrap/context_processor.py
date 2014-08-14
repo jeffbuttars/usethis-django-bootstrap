@@ -170,8 +170,7 @@ def bootstrap_urls(context):
             resp['BOOTSTRAP3_CSS'] += '\n' + css_fmt.format(pre, theme_css_url)
 
         tl = themes.keys()
-        tl.sort()
-        resp['BOOTSTRAP3_THEMES'] = tl
+        resp['BOOTSTRAP3_THEMES'] = sorted(tl)
 
         resp['BOOTSTRAP3_CUR_THEME'] = theme or 'default'
 
