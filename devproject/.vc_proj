@@ -1,2 +1,2 @@
-export VC_PYTHON_EXE=$(which python2)
-# export VC_PYTHON_EXE=$(which python3)
+# export VC_PYTHON_EXE=$(which python2)
+export VC_PYTHON_EXE=$(which python3)

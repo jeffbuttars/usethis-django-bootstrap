@@ -180,9 +180,9 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 
-# MIDDLEWARE_CLASSES = (
-#     'sslify.middleware.SSLifyMiddleware',
-# ) + global_settings.MIDDLEWARE_CLASSES
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+) + global_settings.MIDDLEWARE_CLASSES
 
 ROOT_URLCONF = PROJECT_NAME + '.urls'
 

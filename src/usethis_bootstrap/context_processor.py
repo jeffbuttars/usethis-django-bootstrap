@@ -119,7 +119,10 @@ def bootstrap_urls(context):
 
     # Find all available themes
     themes = scan_themes()
-    theme = context.session.get("bootstrap_theme", BOOTSTRAP_SETTINGS['theme'])
+
+    theme = BOOTSTRAP_SETTINGS['theme']
+    if hasattr(context, 'session'):
+        theme = context.session.get("bootstrap_theme", BOOTSTRAP_SETTINGS['theme'])
 
     # If we're not in DEBUG mode and the urls have already been
     # processed, don't process them again unless we have too.
