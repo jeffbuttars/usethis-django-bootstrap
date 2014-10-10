@@ -2,6 +2,9 @@
 
 import os
 import sys
+from django.conf import global_settings
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_NAME = 'timehook'
 
 
 # Are we in a test run?
@@ -176,13 +179,24 @@ if not DEBUG:
 
 # Add custom context processors here.
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    "django.contrib.auth.context_processors.auth",
     'usethis_bootstrap.context_processor.bootstrap_urls',
 )
 
 
+# MIDDLEWARE_CLASSES = (
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+# ) + global_settings.MIDDLEWARE_CLASSES
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-) + global_settings.MIDDLEWARE_CLASSES
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
 
 ROOT_URLCONF = PROJECT_NAME + '.urls'
 
@@ -195,6 +209,8 @@ WSGI_APPLICATION = PROJECT_NAME + '.wsgi.application'
     # Don't forget to use absolute paths, not relative paths.
 # )
 
+LOGIN_REDIRECT_URL = "/"
+
 # APPEND_SLASH=True
 JQUERY_VER = '2.0.3'
 BOOTSTRAP_SETTINGS = {
@@ -202,8 +218,6 @@ BOOTSTRAP_SETTINGS = {
     # 'themes_dir': os.path.join(SITE_ROOT, 'bootstrap', 'static', 'themes'),
     'theme': 'simplex',
 }
-
-# AUTH_USER_MODEL = 'userapp.CustomUser'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -213,9 +227,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
     'usethis_bootstrap',
     'sample',
 )
