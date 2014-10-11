@@ -1,7 +1,7 @@
 usethis-django-bootstrap
 ========================
 
-# Version 3.2.0
+# Version 3.2.3
 
 My own Django app for easily including Bootstrap and Bootswatch into a Django project.
 
@@ -21,6 +21,41 @@ The easiest and probably best way to install is with pip. Simply issue the
 command:
 
     pip install usethis-django-bootstrap
+
+## Configuration
+
+Configure the app in your settings.py. Simply add `usethis_bootstrap` to your
+`INSTALLED_APPS` and set some variables.
+
+At a minimum you must add `'usethis_bootstrap.context_processor.bootstrap_urls'`
+to your context processors. An example:
+
+    from django.conf import global_settings
+
+    TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+        'usethis_bootstrap.context_processor.bootstrap_urls',
+    )
+
+Add the usethis-django-bootstrap package urls to yours:
+
+```python
+urlpatterns += patterns('django.contrib.staticfiles.views',
+        url(r'', include(usethis_bootstrap.urls)),
+        url(r'^static/(?P<path>.*)$', 'serve'),
+    )
+```
+
+You can change settings with the `BOOTSTRAP_SETTINGS` dictionary.
+
+For example, to enable CDN usage when DEBUG is off and to set the default
+theme/style to 'readable':
+
+    BOOTSTRAP_SETTINGS = {
+        'use_cdn': True,
+        'theme': 'readable',
+    }
+
+
 
 ## Context Variables
 
@@ -140,31 +175,6 @@ There is an example of including the theme chooser, `{% include
 
 
 
-## Configuration
-
-Configure the app in your settings.py. Simple add and set some variables.
-
-At a minimum you must add `'usethis_bootstrap.context_processor.bootstrap_urls'`
-to your context processors. An example:
-
-    from django.conf import global_settings
-
-    TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-        'usethis_bootstrap.context_processor.bootstrap_urls',
-    )
-
-
-You can change settings with the `BOOTSTRAP_SETTINGS` dictionary.
-
-For example, to enable CDN usage when DEBUG is off and to set the default
-theme/style to 'readable':
-
-    BOOTSTRAP_SETTINGS = {
-        'use_cdn': True,
-        'theme': 'readable',
-    }
-
-
 ## Using the Style Chooser
 
 Included a simple template to help make adding a style chooser easy.
@@ -173,4 +183,3 @@ Included a simple template to help make adding a style chooser easy.
 
 * Add CDN support
 * Add multiversion support for Bootstrap
-* Add multiversion support for Bootswatch
