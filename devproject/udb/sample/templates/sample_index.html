@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <title>Bootswatch: {{BOOTSTRAP3_CUR_THEME}}</title>
+  <title>Bootswatch: {{BOOTSTRAP_CUR_THEME}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <!-- <link rel="stylesheet" href="./bootstrap.css" media="screen"> -->
-    {{BOOTSTRAP3_CSS|safe}}
+    {{BOOTSTRAP_CSS|safe}}
     <link rel="stylesheet" href="{{STATIC_URL}}css/font-awesome.min.css">
-    {# {{ BOOTSTRAP3_THEME_CSS|safe }} #}
+    {# {{ BOOTSTRAP_THEME_CSS|safe }} #}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -31,24 +31,6 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
 
-            {% if BOOTSTRAP3_THEMES %}
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes<span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="themes">
-                <li><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' 'default' %}">Default</a></li>
-                <li class="divider"></li>
-                {% for theme in BOOTSTRAP3_THEMES %}
-                {% if theme != 'default' %}
-                    {% if BOOTSTRAP3_CUR_THEME == theme %}
-                    <li class="disabled"><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' theme %}">{{theme|capfirst}}</a></li>
-                    {% else %}
-                    <li><a tabindex="-1" href="{% url 'usethis-bootstrap-theme' theme %}">{{theme|capfirst}}</a></li>
-                    {% endif %}
-                {% endif %}
-                {% endfor %}
-              </ul>
-            </li>
-            {% endif %}
             <li>
               <a href="../help/">Help</a>
             </li>
@@ -65,6 +47,9 @@
                 <li><a href="./bootswatch.less">bootswatch.less</a></li>
               </ul>
             </li>
+
+            {% include "bootstrap_theme_dropdown.html" %}
+
             <li>
             {% if user.is_authenticated %}
               <a href="{% url 'logout' %}">Logout</a>
@@ -98,7 +83,7 @@
       <div class="page-header" id="banner">
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>{{BOOTSTRAP3_CUR_THEME}}</h1>
+            <h1>{{BOOTSTRAP_CUR_THEME}}</h1>
             <p class="lead">Description goes here.</p>
           </div>
           <div class="col-lg-4 col-md-5 col-sm-6">
@@ -1279,7 +1264,7 @@
 
 
     <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
-    {{ BOOTSTRAP3_JS|safe }}
+    {{ BOOTSTRAP_JS|safe }}
     <script src="{{ STATIC_URL }}js/bootswatch.js"></script>
   </body>
 </html>

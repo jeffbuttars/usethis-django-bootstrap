@@ -214,9 +214,8 @@ LOGIN_REDIRECT_URL = "/"
 # APPEND_SLASH=True
 JQUERY_VER = '2.0.3'
 BOOTSTRAP_SETTINGS = {
-    'use_cdn': False,
-    # 'themes_dir': os.path.join(SITE_ROOT, 'bootstrap', 'static', 'themes'),
-    'theme': 'simplex',
+    'use_cdn': True,
+    'theme': 'flatly',
 }
 
 INSTALLED_APPS = (

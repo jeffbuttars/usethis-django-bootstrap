@@ -61,17 +61,17 @@ theme/style to 'readable':
 
 The context variables made available:
 
-* `BOOTSTRAP3_CSS` The style tag for including bootstrap css
-* `BOOTSTRAP3_JS` The style tag for including bootstrap javascript
-* `BOOTSTRAP3_THEMES` A list of all available themes
-* `BOOTSTRAP3_CUR_THEME` The currently selected theme.
+* `BOOTSTRAP_CSS` The style tag for including bootstrap css
+* `BOOTSTRAP_JS` The style tag for including bootstrap javascript
+* `BOOTSTRAP_THEMES` A list of all available themes
+* `BOOTSTRAP_CUR_THEME` The currently selected theme.
 
 An example base template may look like the following template. 
 You'll need to run the the variables through
 the `|safe` filter for them to work.
 
-At the end of the body is where the `BOOTSTRAP3_JS` is used. Be sure to put your
-Jquery JS tag ahead of the `BOOTSTRAP3_JS` tag.
+At the end of the body is where the `BOOTSTRAP_JS` is used. Be sure to put your
+Jquery JS tag ahead of the `BOOTSTRAP_JS` tag.
 
 There is an example of including the theme chooser, `{% include
 "bootstrap_theme_dropdown.html" %}`, in the nav bar.
@@ -85,8 +85,8 @@ There is an example of including the theme chooser, `{% include
         <title>{% block page_title %}Usethis Django Bootstrap{% endblock %}</title>
 
         {% block page_style_links %}
-            {{ BOOTSTRAP3_CSS|safe }}
-            {{ BOOTSTRAP3_THEME_CSS|safe }}
+            {{ BOOTSTRAP_CSS|safe }}
+            {{ BOOTSTRAP_THEME_CSS|safe }}
 
         {% endblock %}{# page_style_links #}
 
@@ -162,7 +162,7 @@ There is an example of including the theme chooser, `{% include
 
         {% block page_bottom_js_links %}
             {# Include you jquery here, before bootstrap #}
-            {{ BOOTSTRAP3_JS|safe }}
+            {{ BOOTSTRAP_JS|safe }}
 
         {% endblock %}{# page_bottom_js_links #}
         <script type="text/javascript" charset="utf-8">
