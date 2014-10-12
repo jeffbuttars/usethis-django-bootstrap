@@ -4,7 +4,6 @@
   <title>Bootswatch: {{BOOTSTRAP_CUR_THEME}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <!-- <link rel="stylesheet" href="./bootstrap.css" media="screen"> -->
     {{BOOTSTRAP_CSS|safe}}
     <link rel="stylesheet" href="{{STATIC_URL}}css/font-awesome.min.css">
     {# {{ BOOTSTRAP_THEME_CSS|safe }} #}
@@ -84,11 +83,11 @@
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-6">
             <h1>{{BOOTSTRAP_CUR_THEME}}</h1>
-            <p class="lead">Description goes here.</p>
+            <p class="lead">{{ BOOTSTRAP_CUR_THEME_META.description }}</p>
           </div>
           <div class="col-lg-4 col-md-5 col-sm-6">
             <div class="sponsor">
-              <a href="http://www.shopify.com/?ref=bootswatch" target="_blank" onclick="_gaq.push(['_trackEvent', 'banner', 'click', 'shopify']);"><img src="../assets/img/shopify.png" alt="Shopify" onload="_gaq.push(['_trackEvent', 'banner', 'impression', 'shopify']);"></a>
+                <a href="http://www.shopify.com/?ref=bootswatch" target="_blank"><img src="{{ STATIC_URL }}img/shopify.png" alt="Shopify"></a>
             </div>
           </div>
         </div>

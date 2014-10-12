@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 
-def theme(req, theme='default'):
+
+def theme(req, theme='bootstrap'):
     print("SETTING THEME TO %s" % theme)
 
     ref = req.META.get('HTTP_REFERER', '/')
@@ -9,4 +10,3 @@ def theme(req, theme='default'):
     print("THEME: %s" % theme)
 
     return redirect(ref)
-#theme()

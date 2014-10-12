@@ -1,0 +1,192 @@
+{
+    "themes": [
+        {
+            "css": "http://bootswatch.com/amelia/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/amelia/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/amelia/bootstrap.min.css",
+            "description": "Sweet and cheery",
+            "less": "http://bootswatch.com/amelia/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/amelia/variables.less",
+            "name": "Amelia",
+            "preview": "http://bootswatch.com/amelia/",
+            "thumbnail": "http://bootswatch.com/amelia/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/cerulean/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/cerulean/bootstrap.min.css",
+            "description": "A calm blue sky",
+            "less": "http://bootswatch.com/cerulean/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/cerulean/variables.less",
+            "name": "Cerulean",
+            "preview": "http://bootswatch.com/cerulean/",
+            "thumbnail": "http://bootswatch.com/cerulean/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/cosmo/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/cosmo/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/cosmo/bootstrap.min.css",
+            "description": "An ode to Metro",
+            "less": "http://bootswatch.com/cosmo/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/cosmo/variables.less",
+            "name": "Cosmo",
+            "preview": "http://bootswatch.com/cosmo/",
+            "thumbnail": "http://bootswatch.com/cosmo/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/cyborg/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/cyborg/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/cyborg/bootstrap.min.css",
+            "description": "Jet black and electric blue",
+            "less": "http://bootswatch.com/cyborg/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/cyborg/variables.less",
+            "name": "Cyborg",
+            "preview": "http://bootswatch.com/cyborg/",
+            "thumbnail": "http://bootswatch.com/cyborg/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/darkly/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/darkly/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/darkly/bootstrap.min.css",
+            "description": "Flatly in night mode",
+            "less": "http://bootswatch.com/darkly/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/darkly/variables.less",
+            "name": "Darkly",
+            "preview": "http://bootswatch.com/darkly/",
+            "thumbnail": "http://bootswatch.com/darkly/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/flatly/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/flatly/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/flatly/bootstrap.min.css",
+            "description": "Flat and modern",
+            "less": "http://bootswatch.com/flatly/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/flatly/variables.less",
+            "name": "Flatly",
+            "preview": "http://bootswatch.com/flatly/",
+            "thumbnail": "http://bootswatch.com/flatly/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/journal/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/journal/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/journal/bootstrap.min.css",
+            "description": "Crisp like a new sheet of paper",
+            "less": "http://bootswatch.com/journal/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/journal/variables.less",
+            "name": "Journal",
+            "preview": "http://bootswatch.com/journal/",
+            "thumbnail": "http://bootswatch.com/journal/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/lumen/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/lumen/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/lumen/bootstrap.min.css",
+            "description": "Light and shadow",
+            "less": "http://bootswatch.com/lumen/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/lumen/variables.less",
+            "name": "Lumen",
+            "preview": "http://bootswatch.com/lumen/",
+            "thumbnail": "http://bootswatch.com/lumen/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/paper/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/paper/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/paper/bootstrap.min.css",
+            "description": "Material is the metaphor",
+            "less": "http://bootswatch.com/paper/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/paper/variables.less",
+            "name": "Paper",
+            "preview": "http://bootswatch.com/paper/",
+            "thumbnail": "http://bootswatch.com/paper/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/readable/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/readable/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/readable/bootstrap.min.css",
+            "description": "Optimized for legibility",
+            "less": "http://bootswatch.com/readable/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/readable/variables.less",
+            "name": "Readable",
+            "preview": "http://bootswatch.com/readable/",
+            "thumbnail": "http://bootswatch.com/readable/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/sandstone/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/sandstone/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/sandstone/bootstrap.min.css",
+            "description": "A touch of warmth",
+            "less": "http://bootswatch.com/sandstone/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/sandstone/variables.less",
+            "name": "Sandstone",
+            "preview": "http://bootswatch.com/sandstone/",
+            "thumbnail": "http://bootswatch.com/sandstone/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/simplex/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/simplex/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/simplex/bootstrap.min.css",
+            "description": "Mini and minimalist",
+            "less": "http://bootswatch.com/simplex/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/simplex/variables.less",
+            "name": "Simplex",
+            "preview": "http://bootswatch.com/simplex/",
+            "thumbnail": "http://bootswatch.com/simplex/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/slate/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/slate/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/slate/bootstrap.min.css",
+            "description": "Shades of gunmetal gray",
+            "less": "http://bootswatch.com/slate/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/slate/variables.less",
+            "name": "Slate",
+            "preview": "http://bootswatch.com/slate/",
+            "thumbnail": "http://bootswatch.com/slate/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/spacelab/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/spacelab/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/spacelab/bootstrap.min.css",
+            "description": "Silvery and sleek",
+            "less": "http://bootswatch.com/spacelab/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/spacelab/variables.less",
+            "name": "Spacelab",
+            "preview": "http://bootswatch.com/spacelab/",
+            "thumbnail": "http://bootswatch.com/spacelab/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/superhero/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/superhero/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/superhero/bootstrap.min.css",
+            "description": "The brave and the blue",
+            "less": "http://bootswatch.com/superhero/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/superhero/variables.less",
+            "name": "Superhero",
+            "preview": "http://bootswatch.com/superhero/",
+            "thumbnail": "http://bootswatch.com/superhero/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/united/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/united/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/united/bootstrap.min.css",
+            "description": "Ubuntu orange and unique font",
+            "less": "http://bootswatch.com/united/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/united/variables.less",
+            "name": "United",
+            "preview": "http://bootswatch.com/united/",
+            "thumbnail": "http://bootswatch.com/united/thumbnail.png"
+        },
+        {
+            "css": "http://bootswatch.com/yeti/bootstrap.css",
+            "cssCdn": "//netdna.bootstrapcdn.com/bootswatch/latest/yeti/bootstrap.min.css",
+            "cssMin": "http://bootswatch.com/yeti/bootstrap.min.css",
+            "description": "A friendly foundation",
+            "less": "http://bootswatch.com/yeti/bootswatch.less",
+            "lessVariables": "http://bootswatch.com/yeti/variables.less",
+            "name": "Yeti",
+            "preview": "http://bootswatch.com/yeti/",
+            "thumbnail": "http://bootswatch.com/yeti/thumbnail.png"
+        }
+    ],
+    "version": "3.2.0"
+}

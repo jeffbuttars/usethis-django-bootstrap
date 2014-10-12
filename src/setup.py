@@ -35,6 +35,7 @@ setup(name='usethis-django-bootstrap',
                      'static/bootstrap-%s/fonts/*' % BSVERSION,
                      'static/bootstrap-%s/js/*.js' % BSVERSION,
                      'static/bootstrap-%s/*_css/*' % BSVERSION,
+                     'static/bootstrap-%s/*.json' % BSVERSION,
                      'templates/*.html',
                      ]}
       )

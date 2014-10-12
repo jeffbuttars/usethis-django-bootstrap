@@ -87,13 +87,16 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'sqlite.db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': '',
+        # Set to empty string for default.
+        'PORT': '',
     }
 }
 
@@ -148,10 +151,10 @@ if DEBUG:
 ADMIN_MEDIA_PREFIX = '%sadmin/' % (STATIC_URL)
 
 # Additional locations of static files
- # STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+# STATICFILES_DIRS = (
+#     Put strings here, like "/home/html/static" or "C:/www/django/static".
+#     Always use forward slashes, even on Windows.
+#     Don't forget to use absolute paths, not relative paths.
 # )
 
 # List of finder classes that know how to find static files in
@@ -159,13 +162,12 @@ ADMIN_MEDIA_PREFIX = '%sadmin/' % (STATIC_URL)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'x+oyqezpi*0)subh(-3!%-3vt8mtp5+mc-huzi1o)-$7@v0@f)'
 
-from django.conf import global_settings
 # List of callables that know how to import templates from various sources.
 # By default, we wrapp all loaders in the cached loader. This is a
 # production scenario, and it's fast!
@@ -204,15 +206,14 @@ ROOT_URLCONF = PROJECT_NAME + '.urls'
 WSGI_APPLICATION = PROJECT_NAME + '.wsgi.application'
 
 # TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+#     Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+#     Always use forward slashes, even on Windows.
+#     Don't forget to use absolute paths, not relative paths.
 # )
 
 LOGIN_REDIRECT_URL = "/"
 
 # APPEND_SLASH=True
-JQUERY_VER = '2.0.3'
 BOOTSTRAP_SETTINGS = {
     'use_cdn': True,
     'theme': 'flatly',
@@ -254,11 +255,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
@@ -280,7 +276,7 @@ LOGGING = {
         },
 
         'django.request': {
-            'handlers': ['mail_admins', 'console', 'file_all'],
+            'handlers': ['console', 'file_all'],
             'level': 'DEBUG' if DEBUG else 'ERROR',
             'propagate': True,
         },
