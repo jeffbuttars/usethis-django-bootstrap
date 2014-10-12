@@ -126,11 +126,9 @@ def bootstrap_urls(context):
     css_fmt = '{} href="{}" {extras}>'
     static_base = "{}bootstrap-{}".format(STATIC_URL, BSVER)
 
-    print("THEME:", theme)
     titem = themes.get(theme, {})
     extras = "media=\"screen\""
     resp = {'BOOTSTRAP_THEMES': _THEME_LIST}
-    print("THEME:", titem)
 
     url_key = 'css_min_url'
 
@@ -158,7 +156,6 @@ def bootstrap_urls(context):
         resp['BOOTSTRAP_CUR_THEME'] = theme or 'bootstrap'
         resp['BOOTSTRAP_CUR_THEME_META'] = titem
 
-    print("CTX:", resp)
     _URLS_CACHED = resp
     return resp
 
