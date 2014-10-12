@@ -7,7 +7,8 @@ My own Django app for easily including Bootstrap and Bootswatch into a Django pr
 
 This is a drop in app that includes Bootstrap and Bootswatch sources and
 minimized sources. This app provides context variables for templates that make
-is easy to use Bootstrap in your Django project. 
+is easy to use Bootstrap in your Django project. There is also CDN support that
+is enabled by default and will use a CDN when `DEBUG` is not enabled.
 
 
 Also included is Bootswatch and a theme swicther drop down so you can easily try out
@@ -45,17 +46,35 @@ urlpatterns += patterns('django.contrib.staticfiles.views',
     )
 ```
 
-You can change settings with the `BOOTSTRAP_SETTINGS` dictionary.
+You can change settings with the `BOOTSTRAP_SETTINGS` dictionary in your
+project `settings.py` file.
 
 For example, to enable CDN usage when DEBUG is off and to set the default
 theme/style to 'readable':
 
-    BOOTSTRAP_SETTINGS = {
-        'use_cdn': True,
-        'theme': 'readable',
-    }
+Here are the settings show with defaults.
 
+```python
+BOOTSTRAP_SETTINGS = {
+    # enable theme selection
+    'enable_themes': True,
 
+    # Use a CDN when DEBUG is disabled
+    'use_cdn': True,
+
+    # Default theme name
+    'theme': 'bootstrap',
+
+    # CDN URL format for Boostrap CSS
+    'css_cdn': '//maxcdn.bootstrapcdn.com/bootstrap/{bsver}/css/bootstrap.min.css',
+
+    # CDN URL format for Boostrap JS
+    'js_cdn': '//maxcdn.bootstrapcdn.com/bootstrap/{bsver}/js/bootstrap.min.js',
+
+    # CDN URL format for Boostswatch CSS
+    'bootswatch_cdn': '//maxcdn.bootstrapcdn.com/bootswatch/{bsver}/{theme}/bootstrap.min.css'
+}
+```
 
 ## Context Variables
 
@@ -178,8 +197,3 @@ There is an example of including the theme chooser, `{% include
 ## Using the Style Chooser
 
 Included a simple template to help make adding a style chooser easy.
-
-# TODO
-
-* Add CDN support
-* Add multiversion support for Bootstrap
