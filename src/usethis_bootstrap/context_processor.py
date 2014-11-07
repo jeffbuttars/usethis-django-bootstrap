@@ -7,7 +7,7 @@ from django.conf import settings  # import the settingsfile
 # logger = logging.getLogger('django.debug')
 
 STATIC_URL = getattr(settings, 'STATIC_URL')
-BSVER = '3.2.0'
+BSVER = '3.3.0'
 BOOTSWATCH_META_FILE = "bootswatch_meta.json"
 
 
@@ -49,6 +49,13 @@ def scan_themes():
     sroot = os.path.dirname(os.path.realpath(__file__))
     static_base = "{}bootstrap-{}".format(STATIC_URL, BSVER)
 
+    # Bootstrap base css
+    _BS_BASE = {
+        'css': os.path.join(static_base, "css/bootstrap.css"),
+        'cssMin': os.path.join(static_base, "css/bootstrap.min.css"),
+        'cssCdn': BOOTSTRAP_SETTINGS.get('css_cdn').format(bsver=BSVER),
+    }
+
     if not sroot:
         return _THEMES_CACHED
 
@@ -75,13 +82,6 @@ def scan_themes():
         'lessVariables': '',
         'preview': '',
         'cssMin': '',
-    }
-
-    # Bootstrap base css
-    _BS_BASE = {
-        'css': os.path.join(static_base, "css/bootstrap.css"),
-        'cssMin': os.path.join(static_base, "css/bootstrap.min.css"),
-        'cssCdn': BOOTSTRAP_SETTINGS.get('css_cdn').format(bsver=BSVER),
     }
 
     # Create the theme data from the meta data
