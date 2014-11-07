@@ -9,7 +9,7 @@ KMAG="\x1B[35m"
 KCYN="\x1B[36m"
 KWHT="\x1B[37m"
 
-export BS_VERSION='3.2.0'
+export BS_VERSION='3.3.0'
 if [[ -n $1 ]]; then
     BS_VERSION="$1"
 fi
@@ -39,7 +39,11 @@ mkdir -p static
 cd static
 unzip "/tmp/$$bootstrap.zip"
 
-mv  "bootstrap-${BS_VERSION}-dist/" "bootstrap-${BS_VERSION}/"
+if [[ -d  "bootstrap-${BS_VERSION}-dist/" ]]; then
+    mv  "bootstrap-${BS_VERSION}-dist/" "bootstrap-${BS_VERSION}/"
+else
+    mv  "dist/" "bootstrap-${BS_VERSION}/"
+fi
 cd -
 
 # Grab the bootswatch themes

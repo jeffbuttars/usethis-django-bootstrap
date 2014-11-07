@@ -66,8 +66,8 @@ def scan_themes():
     # Fill in the default bs theme
     _THEMES_CACHED['bootstrap'] = {
         'name': 'Bootstrap',
-        'css_url': os.path.join(static_base, "css/bootstrap-theme.css"),
-        'css_min_url': os.path.join(static_base, "css/bootstrap-theme.min.css"),
+        'css': os.path.join(static_base, "css/bootstrap-theme.css"),
+        'cssMin': os.path.join(static_base, "css/bootstrap-theme.min.css"),
         'description': 'Default Bootstrap',
         'thumbnail': '',
         'less': '',
@@ -79,8 +79,8 @@ def scan_themes():
 
     # Bootstrap base css
     _BS_BASE = {
-        'css_url': os.path.join(static_base, "css/bootstrap.css"),
-        'css_min_url': os.path.join(static_base, "css/bootstrap.min.css"),
+        'css': os.path.join(static_base, "css/bootstrap.css"),
+        'cssMin': os.path.join(static_base, "css/bootstrap.min.css"),
         'cssCdn': BOOTSTRAP_SETTINGS.get('css_cdn').format(bsver=BSVER),
     }
 
@@ -90,8 +90,8 @@ def scan_themes():
         _THEMES_CACHED[t_name] = t
         _THEMES_CACHED[t_name].update(
             {
-                'css_url': "{}/{}_css/bootstrap.css".format(static_base, t_name),
-                'css_min_url': "{}/{}_css/bootstrap.min.css".format(static_base, t_name),
+                'css': "{}/{}_css/bootstrap.css".format(static_base, t_name),
+                'cssMin': "{}/{}_css/bootstrap.min.css".format(static_base, t_name),
             }
         )
 
@@ -130,10 +130,10 @@ def bootstrap_urls(context):
     extras = "media=\"screen\""
     resp = {'BOOTSTRAP_THEMES': _THEME_LIST}
 
-    url_key = 'css_min_url'
+    url_key = 'cssMin'
 
     if debug:
-        url_key = 'css_url'
+        url_key = 'css'
     elif BOOTSTRAP_SETTINGS['use_cdn']:
         url_key = 'cssCdn'
 
