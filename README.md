@@ -1,7 +1,7 @@
 usethis-django-bootstrap
 ========================
 
-# Version 3.2.3
+# Version 3.3.4
 
 My own Django app for easily including Bootstrap and Bootswatch into a Django project.
 
