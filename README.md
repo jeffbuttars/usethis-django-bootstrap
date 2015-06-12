@@ -40,10 +40,12 @@ to your context processors. An example:
 Add the usethis-django-bootstrap package urls to yours:
 
 ```python
-urlpatterns += patterns('django.contrib.staticfiles.views',
+import usethis_bootstrap.urls
+
+
+urlpatterns += [
         url(r'', include(usethis_bootstrap.urls)),
-        url(r'^static/(?P<path>.*)$', 'serve'),
-    )
+    ]
 ```
 
 You can change settings with the `BOOTSTRAP_SETTINGS` dictionary in your
