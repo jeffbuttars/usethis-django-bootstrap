@@ -95,7 +95,7 @@ At the end of the body is where the `BOOTSTRAP_JS` is used. Be sure to put your
 Jquery JS tag ahead of the `BOOTSTRAP_JS` tag.
 
 There is an example of including the theme chooser, `{% include
-"bootstrap_theme_dropdown.html" %}`, in the nav bar.
+"usethis_bootstrap_theme_dropdown.html" %}`, in the nav bar.
 
 
 ```html
@@ -150,7 +150,7 @@ There is an example of including the theme chooser, `{% include
                     {# Include the theme chooser, pulled to the right side of the nav bar #}
                     <div style="display: inline-block;" class="pull-right">
                         <ul class="nav pull-right">
-                        {% include "bootstrap_theme_dropdown.html" %}
+                        {% include "usethis_bootstrap_theme_dropdown.html" %}
                         </ul>
                     </div>
                 </div><!--/.nav-collapse -->

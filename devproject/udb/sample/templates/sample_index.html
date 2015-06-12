@@ -47,7 +47,15 @@
               </ul>
             </li>
 
-            {% include "bootstrap_theme_dropdown.html" %}
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="basetemplates">Base Templates<span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="basetemplates">
+                <li><a href="{% url 'bases_starter' %}">Starter</a></li>
+                <li><a href="{% url 'bases_jumbotron' %}">Jumbotron</a></li>
+              </ul>
+            </li>
+
+            {% include "usethis_bootstrap_theme_dropdown.html" %}
 
             <li>
             {% if user.is_authenticated %}
@@ -952,6 +960,7 @@
                 <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
               </div>
 
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
               <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
               </div>

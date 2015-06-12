@@ -1,0 +1,12 @@
+{% extends "usethis_bootstrap_starter.html" %}
+
+{% block page_brand %}
+Use This Django Bootstrap
+{% endblock page_brand %}
+{% block page_brand_url %}{% url 'home' %}{% endblock page_brand_url %}
+
+{% block page_navbar_items %}
+<li class="active"><a href="{% url 'home' %}">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+{% endblock page_navbar_items %}

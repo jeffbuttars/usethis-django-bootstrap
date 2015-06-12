@@ -3,16 +3,15 @@ from django.views.generic.base import View, TemplateView
 
 class Index(TemplateView):
     template_name = "sample_index.html"
-# Index
 
 
-# class Login(View):
-#     def get(self, req):
+class Bases(TemplateView):
+    template_name = "sample_bases.html"
 
-#         return render(
-#             req,
-#             'sample_login.html', 
-#             {
-#                 'login_form': BSAuthenticationForm,
-#             }
-#         )
+
+class BasesStarter(TemplateView):
+    template_name = "sample_bases_starter.html"
+
+
+class BasesJumbotron(TemplateView):
+    template_name = "sample_bases_jumbotron.html"
