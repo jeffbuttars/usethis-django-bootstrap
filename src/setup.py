@@ -6,7 +6,7 @@ from distutils.core import setup
 BSVERSION = '3.3.5'
 
 setup(name='usethis-django-bootstrap',
-      version='3.3.5',
+      version='3.3.5.1',
       description="Bootstrap %s for Django with themes and theme chooser." % BSVERSION,
       author="Jeff Buttars",
       author_email="jeffbuttars@gmail.com",

@@ -1,0 +1,25 @@
+{% extends "usethis_bootstrap_narrow_jumbotron.html" %}
+
+{% block page_brand %}
+Use This Django Bootstrap
+{% endblock page_brand %}
+{% block page_brand_url %}{% url 'home' %}{% endblock page_brand_url %}
+
+{% block jumbo_heading %}
+Custom Jumboness
+{% endblock jumbo_heading %}
+
+{% block jumbo_lead %}
+    Use This Django Bootstrap is the best!
+        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+{% endblock jumbo_lead %}
+
+{% block jumbo_btn_link %}{% url 'home' %}{% endblock jumbo_btn_link %}
+
+{% block jumbo_btn %}
+Download Now!
+{% endblock jumbo_btn %}
+
+{% block page_footer %}
+<p>&copy; Use This Django Bootstrap 2015</p>
+{% endblock page_footer %}

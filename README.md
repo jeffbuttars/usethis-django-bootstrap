@@ -3,9 +3,9 @@ usethis-django-bootstrap
 
 # Version 3.3.4
 
-My own Django app for easily including Bootstrap and Bootswatch into a Django project.
+My own Django app for easily including Bootstrap, JQuery and Bootswatch into a Django project.
 
-This is a drop in app that includes Bootstrap and Bootswatch sources and
+This is a drop in app that includes Bootstrap, JQuery and Bootswatch sources and
 minimized sources. This app provides context variables for templates that make
 is easy to use Bootstrap in your Django project. There is also CDN support that
 is enabled by default and will use a CDN when `DEBUG` is not enabled.
@@ -83,6 +83,7 @@ BOOTSTRAP_SETTINGS = {
 The context variables made available:
 
 * `BOOTSTRAP_CSS` The style tag for including bootstrap css
+* `BOOTSTRAP_JQ_JS` The style tag for including JQuery javascript
 * `BOOTSTRAP_JS` The style tag for including bootstrap javascript
 * `BOOTSTRAP_THEMES` A list of all available themes
 * `BOOTSTRAP_CUR_THEME` The currently selected theme.
@@ -183,6 +184,7 @@ There is an example of including the theme chooser, `{% include
 
         {% block page_bottom_js_links %}
             {# Include you jquery here, before bootstrap #}
+            {{ BOOTSTRAP_JQ_JS|safe }}
             {{ BOOTSTRAP_JS|safe }}
 
         {% endblock %}{# page_bottom_js_links #}

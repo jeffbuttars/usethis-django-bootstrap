@@ -15,3 +15,7 @@ class BasesStarter(TemplateView):
 
 class BasesJumbotron(TemplateView):
     template_name = "sample_bases_jumbotron.html"
+
+
+class BasesNarrowJumbotron(TemplateView):
+    template_name = "sample_bases_narrow_jumbotron.html"

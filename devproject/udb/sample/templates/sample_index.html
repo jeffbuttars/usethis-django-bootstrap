@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     {{BOOTSTRAP_CSS|safe}}
     <link rel="stylesheet" href="{{STATIC_URL}}css/font-awesome.min.css">
-    {# {{ BOOTSTRAP_THEME_CSS|safe }} #}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -52,6 +51,7 @@
               <ul class="dropdown-menu" aria-labelledby="basetemplates">
                 <li><a href="{% url 'bases_starter' %}">Starter</a></li>
                 <li><a href="{% url 'bases_jumbotron' %}">Jumbotron</a></li>
+                <li><a href="{% url 'bases_narrow_jumbotron' %}">Narrow Jumbotron</a></li>
               </ul>
             </li>
 
@@ -960,7 +960,7 @@
                 <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
               </div>
 
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+            <link href="../assets/css/bootstrap.css" rel="stylesheet">
               <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
               </div>
@@ -1271,7 +1271,7 @@
     </div>
 
 
-    <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    {{ BOOTSTRAP_JQ_JS|safe }}
     {{ BOOTSTRAP_JS|safe }}
     <script src="{{ STATIC_URL }}js/bootswatch.js"></script>
   </body>

@@ -70,6 +70,8 @@ def scan_themes():
     with open(os.path.join(ftdir, BOOTSWATCH_META_FILE), 'r') as fd:
         bsw_meta = json.loads(fd.read())
 
+    BOOTSTRAP_SETTINGS['jquery_ver'] = bsw_meta.get('jquery_ver', '')
+
     # Fill in the default bs theme
     _THEMES_CACHED['bootstrap'] = {
         'name': 'Bootstrap',
@@ -140,15 +142,21 @@ def bootstrap_urls(context):
     # Build the bootstrap url starting with the base theme/css
     resp['BOOTSTRAP_CSS'] = css_fmt.format(pre, _BS_BASE[url_key], extras=extras)
 
-    # Build the bootstrap JS url
+    # Build the bootstrap and jquery JS url
+    js_jq_url = '{}/js/jquery-{}.min.js'.format(
+        static_base, BOOTSTRAP_SETTINGS.get('jquery_ver', ''))
+
     if debug:
         js_url = '{}/js/bootstrap.js'.format(static_base)
+        js_jq_url = '{}/js/jquery-{}.js'.format(
+            static_base, BOOTSTRAP_SETTINGS.get('jquery_ver', ''))
     elif BOOTSTRAP_SETTINGS.get('use_cdn'):
         js_url = BOOTSTRAP_SETTINGS.get('js_cdn')
     else:
         js_url = '{}/js/bootstrap.min.js'.format(static_base)
 
     resp['BOOTSTRAP_JS'] = '<script src="{}"></script>'.format(js_url)
+    resp['BOOTSTRAP_JQ_JS'] = '<script src="{}"></script>'.format(js_jq_url)
 
     # If themes are enable, add the theme file tag
     if BOOTSTRAP_SETTINGS.get('enable_themes') and theme:
