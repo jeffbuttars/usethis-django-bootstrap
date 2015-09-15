@@ -11,7 +11,7 @@ THEME_META_FILE = "bootswatch_meta.json"
 
 
 def main():
-    bs_version = os.getenv('BS_VERSION', '3.2.0')
+    bs_version = os.getenv('BS_VERSION', '3.3.5')
     bsw_api_version = os.getenv('BSW_API_VERSION', '3')
 
     outdir = os.getenv('BSW_OUTDIR', "{}/static/bootstrap-{}".format(

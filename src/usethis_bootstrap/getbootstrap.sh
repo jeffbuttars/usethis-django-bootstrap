@@ -9,7 +9,7 @@ KMAG="\x1B[35m"
 KCYN="\x1B[36m"
 KWHT="\x1B[37m"
 
-export BS_VERSION='3.3.4'
+export BS_VERSION='3.3.5'
 if [[ -n $1 ]]; then
     BS_VERSION="$1"
 fi
