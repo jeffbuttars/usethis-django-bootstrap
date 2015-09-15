@@ -1,9 +1,8 @@
-Django==1.7
+Django==1.8.4
 backports.ssl-match-hostname==3.4.0.2
-django-annoying==0.7.9
+django-annoying==0.8.4
 django-tornado==1.1.6
-docutils==0.11
-tornado==3.2
-usethis-django-bootstrap==3.3.0
-wheel==0.22.0
-wsgiref==0.1.2
+docutils==0.12
+tornado==4.2.1
+usethis-django-bootstrap==3.3.4
+wheel==0.24.0
