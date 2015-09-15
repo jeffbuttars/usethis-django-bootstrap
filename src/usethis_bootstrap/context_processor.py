@@ -7,7 +7,7 @@ from django.conf import settings  # import the settingsfile
 # logger = logging.getLogger('django.debug')
 
 STATIC_URL = getattr(settings, 'STATIC_URL')
-BSVER = '3.3.4'
+BSVER = '3.3.5'
 BOOTSWATCH_META_FILE = "bootswatch_meta.json"
 
 
