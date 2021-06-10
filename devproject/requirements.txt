@@ -1,4 +1,4 @@
-Django==1.8.4
+Django==2.2.24
 backports.ssl-match-hostname==3.4.0.2
 django-annoying==0.8.4
 django-tornado==1.1.6
