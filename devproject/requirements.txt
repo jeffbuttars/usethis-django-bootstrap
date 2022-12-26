@@ -5,4 +5,4 @@ django-tornado==1.1.6
 docutils==0.12
 tornado==4.2.1
 usethis-django-bootstrap==3.3.4
-wheel==0.24.0
+wheel==0.38.1
